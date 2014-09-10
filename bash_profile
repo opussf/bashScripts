@@ -24,6 +24,8 @@ free_mem(){
 export PS1="\A (\!) \h:\w\$(parse_git_branch) \$(align_right)\$(mach_factor)\$(free_mem)\n$ "
 
 #----
+# http://gohgarry.wordpress.com/2010/01/16/fun-with-mac-say-command/
+#----
 
 rssViewDiff(){
 	TAG=${1}
