@@ -13,11 +13,11 @@ align_right(){
 	cols=$(tput cols); rcols=$((${cols}-35)); echo -ne "\033[$(tput lines);${rcols}H"
 }
 mach_factor(){
-	mf="$(hostinfo|grep "Mach factor"|cut -d: -f2| cut -d, -f1|awk '{print $1}')mf"
+	mf="$(hostinfo|grep "Mach factor"|cut -d: -f2| cut -d, -f1|awk '{print $1}') mf"
 	echo -ne "[\033[0;36m${mf}\033[00m]"
 }
 free_mem(){
-	free="$(( $(vm_stat | awk '/free/ {gsub(/\./, "", $3); print $3}') * 4096 / 1048576))MB"
+	free="$(( $(vm_stat | awk '/free/ {gsub(/\./, "", $3); print $3}') * 4096 / 1048576)) MB"
 	echo -ne "[\033[00;31m${free}\033[00m]"
 }
 
