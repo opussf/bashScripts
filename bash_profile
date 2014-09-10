@@ -7,7 +7,8 @@ alias sub='"/Applications/Sublime Text 2.app/Contents/MacOS/Sublime Text 2" &'
 #  https://wiki.archlinux.org/index.php/Color_Bash_Prompt
 #-----
 parse_git_branch(){
-	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+	branch=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/')
+	echo -ne "\033[0;36m${branch}\033[00m"
 }
 align_right(){
 	cols=$(tput cols); rcols=$((${cols}-35)); echo -ne "\033[$(tput lines);${rcols}H"
