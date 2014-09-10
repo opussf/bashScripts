@@ -21,5 +21,5 @@ free_mem(){
 	echo -ne "[\033[00;31m${free}\033[00m]"
 }
 
-export PS1="\A \h:\w\$(parse_git_branch) \u \$(align_right)\$(mach_factor)\$(free_mem)\n$ "
+export PS1="\A (\!) \h:\w\$(parse_git_branch) \$(align_right)\$(mach_factor)\$(free_mem)\n$ "
 
