@@ -30,9 +30,10 @@ rssViewDiff(){
 	BASEFILE=${2}
 	CLICKURL=${3}
 	CHANGE=$(diff ${BASEFILE}.new ${BASEFILE}.previous | wc -l)
-	if [ ${CHANGE} != 0 ]; then {
+	if [ ${CHANGE} -ne 0 ]; then {
 		( echo ${TAG} && diff ${BASEFILE}.new ${BASEFILE}.previous ) | terminal-notifier -open ${CLICKURL} -message
 	}; fi
+	( diff ${BASEFILE}.new ${BASEFILE}.previous ) | say
 	mv ${BASEFILE}.new ${BASEFILE}.previous
 }
 
@@ -42,6 +43,6 @@ rssViewTag(){
 	BLOCK=${3}
 	CLICKURL=${4}
 	BASEFILE=${5}
-	curl ${URL} 2>/dev/null | grep "<${BLOCK}>" | sed -e "s/.*\<${BLOCK}\>\(.*\)\<\/${BLOCK}\>.*/\1/g" > ${BASEFILE}.new
-	rssViewDiff ${TAG} ${BASEFILE} ${CLICKURL}
+	curl ${URL} 2>/dev/null | grep "<${BLOCK}>" | sed -e "s/.*\<${BLOCK}.*\>\(.*\)\<\/${BLOCK}\>.*/\1/g" > ${BASEFILE}.new
+	rssViewDiff "${TAG}" ${BASEFILE} ${CLICKURL}
 }
