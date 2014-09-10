@@ -18,7 +18,7 @@ mach_factor(){
 }
 free_mem(){
 	free="$(( $(vm_stat | awk '/free/ {gsub(/\./, "", $3); print $3}') * 4096 / 1048576))MB"
-	echo -ne "[\033[01;31m${free}\033[00m]"
+	echo -ne "[\033[00;31m${free}\033[00m]"
 }
 
 export PS1="\A \h:\w\$(parse_git_branch) \u \$(align_right)\$(mach_factor)\$(free_mem)\n$ "
