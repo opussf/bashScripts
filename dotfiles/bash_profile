@@ -22,7 +22,7 @@ free_mem(){
 	echo -ne "[\033[00;31m${free}\033[00m]"
 }
 
-export PS1="\A (\!) \h:\w\$(parse_git_branch) \$(align_right)\$(mach_factor)\$(free_mem)\n$ "
+export PS1="\A (\!) $(mach_factor)\$(free_mem) \h:\w\$(parse_git_branch)\n$ "
 
 #----
 # http://gohgarry.wordpress.com/2010/01/16/fun-with-mac-say-command/
