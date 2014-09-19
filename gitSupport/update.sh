@@ -27,7 +27,7 @@ done
 echo "--- Waiting for updates to happen ---"
 wait
 echo "=========="
-rm update.log
+[ -f update.log ] && rm update.log
 for repo in `ls`
 do
 if [ -f update.${repo}.log ]; then
@@ -35,4 +35,4 @@ if [ -f update.${repo}.log ]; then
 	rm update.${repo}.log
 fi
 done
-cat update.log
+[ -f update.log ] && cat update.log
