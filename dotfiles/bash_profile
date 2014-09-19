@@ -32,11 +32,11 @@ rssViewDiff(){
 	TAG=${1}
 	BASEFILE=${2}
 	CLICKURL=${3}
-	CHANGE=$(diff ${BASEFILE}.new ${BASEFILE}.previous | wc -l)
+	CHANGE=$(diff ${BASEFILE}.previous ${BASEFILE}.new | wc -l)
 	if [ ${CHANGE} -ne 0 ]; then {
-		( echo ${TAG} && diff --unchanged-line-format= --old-line-format= --new-line-format='%L'${BASEFILE}.new ${BASEFILE}.previous ) | terminal-notifier -open ${CLICKURL} -message
+		( echo ${TAG} && diff --unchanged-line-format= --old-line-format= --new-line-format='%L' ${BASEFILE}.previous ${BASEFILE}.new ) | terminal-notifier -open ${CLICKURL} -message
 	}; fi
-	( diff --unchanged-line-format= --old-line-format= --new-line-format='%L'${BASEFILE}.new ${BASEFILE}.previous ) | say
+	( diff --unchanged-line-format= --old-line-format= --new-line-format='%L' ${BASEFILE}.previous ${BASEFILE}.new ) | say
 	mv ${BASEFILE}.new ${BASEFILE}.previous
 }
 
