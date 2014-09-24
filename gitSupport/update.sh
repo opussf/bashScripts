@@ -7,7 +7,7 @@
 gitupdate() {
 	echo "Updating: -- ${1} --" >> ../update.${1}.log
 	echo "--------" >> ../update.${1}.log
-	git remote -v update >> ../update.${1}.log 2>&1
+	git remote -vv update >> ../update.${1}.log 2>&1
 	git pull --ff-only >> ../update.${1}.log 2>&1
 	echo "========" >> ../update.${1}.log
 }
@@ -35,4 +35,4 @@ if [ -f update.${repo}.log ]; then
 	rm update.${repo}.log
 fi
 done
-[ -f update.log ] && cat update.log
+[ -f update.log ] && less update.log
