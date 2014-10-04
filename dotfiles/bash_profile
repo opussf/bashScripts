@@ -16,7 +16,7 @@ align_right(){
 	cols=$(tput cols); rcols=$((${cols}-35)); echo -ne "\033[$(tput lines);${rcols}H"
 }
 mach_factor(){
-	mf="$(hostinfo|grep "Mach factor"|cut -d: -f2| cut -d, -f1|awk '{print $1}') mf"
+	mf="$(hostinfo|grep "Mach factor"|cut -d: -f3|awk '{print $1}') mf"
 	echo -ne "[\033[0;36m${mf}\033[00m]"
 }
 free_mem(){
