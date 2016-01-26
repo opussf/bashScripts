@@ -2,4 +2,4 @@ alias.lg=log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Crese
 alias.st=status
 alias.ci=commit -v
 alias.co=checkout
-alias.br=branch
+alias.br=branch -vv
